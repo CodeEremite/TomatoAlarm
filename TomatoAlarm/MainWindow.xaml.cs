@@ -23,6 +23,22 @@ namespace TomatoAlarm
         public MainWindow()
         {
             InitializeComponent();
+            try
+            {
+                Rect bounds = Properties.Settings.Default.WindowPosition;
+                this.Top=bounds.Top;
+                this.Left=bounds.Left;
+            }
+            catch
+            {
+                MessageBox.Show("No setting stored.");
+            }
+        }
+
+        private void onclosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Properties.Settings.Default.WindowPosition = this.RestoreBounds;
+            Properties.Settings.Default.Save();
         }
     }
 }
