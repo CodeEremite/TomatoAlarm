@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+using System.Timers;
 namespace TomatoAlarm
 {
     /// <summary>
@@ -20,6 +8,8 @@ namespace TomatoAlarm
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CAlarm alarm;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +23,18 @@ namespace TomatoAlarm
             {
                 MessageBox.Show("No setting stored.");
             }
+
+            alarm = new CAlarm {TimeLimit = new TimeSpan(0,1,0)};
+
+            this.DataContext = alarm;
+            alarm.Start();
+
+            alarm.TimeOut += Alarm_TimeOut;
+        }
+
+        private void Alarm_TimeOut(object sender, EventArgs e)
+        {
+            this.Background = System.Windows.Media.Brushes.Red;
         }
 
         private void onclosing(object sender, System.ComponentModel.CancelEventArgs e)
