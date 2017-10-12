@@ -15,7 +15,7 @@ namespace TomatoAlarm
     {
         private void OnStartUp(object sender, StartupEventArgs e)
         {
-            MainWindow win = new MainWindow(new CAlarm {TimeLimit = new TimeSpan(0,0,1)});
+            MainWindow win = new MainWindow(new CAlarm {TimeLimit = new TimeSpan(0,0,5)});
             this.MainWindow = win;
             win.Show();
         }

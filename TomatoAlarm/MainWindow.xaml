@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TomatoAlarm"
         mc:Ignorable="d"
-        Title="MainWindow" Height="120" Width="300" Closing="onclosing" AllowsTransparency="True" WindowStyle="None">
+        Title="MainWindow" Height="120" Width="300" 
+        Closing="onclosing" 
+        AllowsTransparency="True" WindowStyle="None"
+        Background="Transparent">
     <DockPanel>
         <TextBlock Text="{Binding TimeLeft}" TextAlignment="Center" VerticalAlignment="Center" FontSize="60"></TextBlock> 
     </DockPanel>
