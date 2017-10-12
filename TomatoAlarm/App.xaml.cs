@@ -13,5 +13,11 @@ namespace TomatoAlarm
     /// </summary>
     public partial class App : Application
     {
+        private void OnStartUp(object sender, StartupEventArgs e)
+        {
+            MainWindow win = new MainWindow(new CAlarm {TimeLimit = new TimeSpan(0,0,1)});
+            this.MainWindow = win;
+            win.Show();
+        }
     }
 }

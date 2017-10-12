@@ -10,9 +10,13 @@ namespace TomatoAlarm
     {
         private CAlarm alarm;
 
-        public MainWindow()
+        public MainWindow(CAlarm alm)
         {
             InitializeComponent();
+
+            this.DataContext = this.alarm = alm;
+
+
             try
             {
                 Rect bounds = Properties.Settings.Default.WindowPosition;
@@ -24,9 +28,7 @@ namespace TomatoAlarm
                 MessageBox.Show("No setting stored.");
             }
 
-            alarm = new CAlarm {TimeLimit = new TimeSpan(0,1,0)};
-
-            this.DataContext = alarm;
+            //TODO: 界面完善,拖动功能，透明功能、设置功能、退出、停止功能
             alarm.Start();
 
             alarm.TimeOut += Alarm_TimeOut;
